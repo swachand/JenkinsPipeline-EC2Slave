@@ -8,8 +8,8 @@ pipeline{
          stage('Open App Server SG') {
             steps {
                withAWS(credentials: 'AWSCred', region: 'ap-south-1') {
-               sh 'aws ec2 authorize-security-group-ingress --group-id sg-0afd7f6fc870e581c --protocol tcp --port 22 --cidr 172.31.0.0/16' 
-                   //--source-group sg-0c6cfdd5fcd57aea6
+               sh 'aws ec2 authorize-security-group-ingress --group-id sg-0afd7f6fc870e581c --protocol tcp --port 22 --source-group sg-0c6cfdd5fcd57aea6' 
+                   // --cidr 172.31.0.0/16
                }        
            }
         }
@@ -39,8 +39,8 @@ pipeline{
         stage('Close App Server SG') {
             steps {
                withAWS(credentials: 'AWSCred', region: 'ap-south-1') {
-               sh 'aws ec2 revoke-security-group-ingress --group-id sg-0afd7f6fc870e581c --protocol tcp --port 22 --cidr 172.31.0.0/16'
-                   //--source-group sg-0c6cfdd5fcd57aea6'
+               sh 'aws ec2 revoke-security-group-ingress --group-id sg-0afd7f6fc870e581c --protocol tcp --port 22 --source-group sg-0c6cfdd5fcd57aea6'
+                   //--cidr 172.31.0.0/16'
                }
            }
         }
