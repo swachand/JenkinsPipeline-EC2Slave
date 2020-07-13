@@ -28,7 +28,7 @@ pipeline{
               sh "${mvnCMD} clean package"
               }
         }
-        Stage ('Deployment to App Server') {
+        stage ('Deployment to App Server') {
            steps {
                sshagent(['test-server']) {
                 //App server sshconnet
