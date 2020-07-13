@@ -33,7 +33,7 @@ pipeline{
                sshagent(['test-server']) {
                 //App server sshconnet
                sh 'mv target/*.war target/javaapp.war'
-               sh "scp -o StrictHostKeyChecking=no  target/javaapp.war ubuntu@13.234.118.183:/opt/tomcat/webapps"
+               sh "scp -o StrictHostKeyChecking=no  target/javaapp.war ubuntu@13.234.118.183:/opt/apache-tomcat-9.0.37/webapps"
                }
             }    
         }
